@@ -31,7 +31,7 @@ class _RecordCreateState extends State<RecordCreate> {
     return Scaffold(
       appBar: AppBar(title: const Text('음반 등록'), centerTitle: true),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -202,34 +202,47 @@ class _RecordCreateState extends State<RecordCreate> {
                 hintText: '예: 앨범 상태, 수록곡, 특별한 정보 등',
               ),
             ),
-            const SizedBox(height: 24),
-
-            // 🔹 5) 등록 버튼
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: () {
-                  final title = _title.text.trim();
-                  final artist = _artist.text.trim();
-                  final stock = int.tryParse(_stock.text.trim()) ?? 0;
-                  final price = int.tryParse(_price.text.trim()) ?? 0;
-                  final desc = _description.text.trim();
-                  final image = _imageUrl.text.trim();
-
-                  // 입력값 출력 확인용
-                  print(
-                    '🎵 $title | $artist | $stock | $price | $desc | $image',
-                  );
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(const SnackBar(content: Text('등록 완료! 🎉')));
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.check),
-                label: const Text('등록하기'),
-              ),
-            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+          child: Row(
+            children: [
+              // 취소
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('취소'),
+                ),
+              ),
+              const SizedBox(width: 12),
+              // 등록하기
+              Expanded(
+                child: FilledButton.icon(
+                  onPressed: () {
+                    final title = _title.text.trim();
+                    final artist = _artist.text.trim();
+                    final stock = int.tryParse(_stock.text.trim()) ?? 0;
+                    final price = int.tryParse(_price.text.trim()) ?? 0;
+                    final desc = _description.text.trim();
+                    final image = _imageUrl.text.trim();
+
+                    print(
+                      '🎵 $title | $artist | $stock | $price | $desc | $image',
+                    );
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(const SnackBar(content: Text('등록 완료! 🎉')));
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.check),
+                  label: const Text('등록하기'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
