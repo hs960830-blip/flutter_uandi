@@ -9,10 +9,20 @@ class RecordCreate extends StatefulWidget {
 
 class _RecordCreateState extends State<RecordCreate> {
   final TextEditingController _imageUrl = TextEditingController();
+  final TextEditingController _title = TextEditingController(); // 음반명
+  final TextEditingController _artist = TextEditingController(); // 아티스트
+  final TextEditingController _stock = TextEditingController(); // 수량
+  final TextEditingController _price = TextEditingController(); // 금액
+  final TextEditingController _description = TextEditingController(); // 상세 설명
 
   @override
   void dispose() {
     _imageUrl.dispose();
+    _title.dispose();
+    _artist.dispose();
+    _stock.dispose();
+    _price.dispose();
+    _description.dispose();
     super.dispose();
   }
 
@@ -98,7 +108,8 @@ class _RecordCreateState extends State<RecordCreate> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const TextField(
+            TextField(
+              controller: _title,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: '예: The Beatles - Abbey Road',
@@ -112,7 +123,8 @@ class _RecordCreateState extends State<RecordCreate> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const TextField(
+            TextField(
+              controller: _artist,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: '예: The Beatles',
@@ -127,7 +139,7 @@ class _RecordCreateState extends State<RecordCreate> {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         '수량',
                         style: TextStyle(
@@ -137,6 +149,7 @@ class _RecordCreateState extends State<RecordCreate> {
                       ),
                       SizedBox(height: 8),
                       TextField(
+                        controller: _stock,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -151,7 +164,7 @@ class _RecordCreateState extends State<RecordCreate> {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         '금액 (₩)',
                         style: TextStyle(
@@ -161,6 +174,7 @@ class _RecordCreateState extends State<RecordCreate> {
                       ),
                       SizedBox(height: 8),
                       TextField(
+                        controller: _price,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -180,7 +194,8 @@ class _RecordCreateState extends State<RecordCreate> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const TextField(
+            TextField(
+              controller: _description,
               maxLines: 3,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -194,9 +209,20 @@ class _RecordCreateState extends State<RecordCreate> {
               width: double.infinity,
               child: FilledButton.icon(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('등록 완료! 🎉')),
+                  final title = _title.text.trim();
+                  final artist = _artist.text.trim();
+                  final stock = int.tryParse(_stock.text.trim()) ?? 0;
+                  final price = int.tryParse(_price.text.trim()) ?? 0;
+                  final desc = _description.text.trim();
+                  final image = _imageUrl.text.trim();
+
+                  // 입력값 출력 확인용
+                  print(
+                    '🎵 $title | $artist | $stock | $price | $desc | $image',
                   );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('등록 완료! 🎉')));
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.check),
