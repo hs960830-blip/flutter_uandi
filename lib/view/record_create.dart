@@ -229,13 +229,29 @@ class _RecordCreateState extends State<RecordCreate> {
                     final desc = _description.text.trim();
                     final image = _imageUrl.text.trim();
 
-                    print(
-                      '🎵 $title | $artist | $stock | $price | $desc | $image',
-                    );
+                    // 🔹 입력값 검사 (비어있을 때 안내)
+                    if (title.isEmpty || artist.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('음반명과 아티스트를 입력해주세요')),
+                      );
+                      return;
+                    }
+
+                    // ✅ 등록한 데이터를 Map 형태로 정리
+                    final newRecord = {
+                      'title': title,
+                      'artist': artist,
+                      'stock': stock,
+                      'price': price,
+                      'desc': desc,
+                      'image': image,
+                    };
+
+                    // ✅ 등록 완료 메시지 + 데이터 반환
                     ScaffoldMessenger.of(
                       context,
                     ).showSnackBar(const SnackBar(content: Text('등록 완료! 🎉')));
-                    Navigator.pop(context);
+                    Navigator.pop(context, newRecord); // <-- 🔹 여기!
                   },
                   icon: const Icon(Icons.check),
                   label: const Text('등록하기'),
