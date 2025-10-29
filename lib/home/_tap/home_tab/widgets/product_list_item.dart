@@ -3,7 +3,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_uandi/record_detail_page.dart';
 
 class ProductListItem extends StatelessWidget{
  
@@ -24,7 +23,7 @@ class ProductListItem extends StatelessWidget{
  
   @override
   Widget build(BuildContext context) {
-
+    //목록 리스트 생성자 파라미터 설정
     return Row(
       children: [
         SizedBox(
@@ -40,12 +39,29 @@ class ProductListItem extends StatelessWidget{
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title,)
+              Text(title,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey,
+              )),
+             const SizedBox(height: 5),
+             Text('${price}원',
+             style: const TextStyle(
+              fontSize: 12,
+              color: Color.fromARGB(255, 95, 95, 95)
+             )),
+             Text('재고 수량: $stock',
+             style: const TextStyle(
+              fontSize: 12,
+              color: Color.fromARGB(255, 95, 95, 95)
+             ))
             ],
           ))
       ],
-    )
+    );
   }
+}
    /* return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context){
