@@ -14,8 +14,8 @@ class _RecordListState extends State<RecordList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('wasabi gimbab record',
+     /* appBar: AppBar(
+        title: Text('wasabi gimbab records',
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.bold
@@ -25,7 +25,7 @@ class _RecordListState extends State<RecordList> {
           size: 30,),
           SizedBox(width: 20)
         ],
-      ),
+      ),*/
       body: Column(
         children: [
           SizedBox(height: 10),
