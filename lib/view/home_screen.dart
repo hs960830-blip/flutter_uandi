@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_uandi/record_detail_page.dart';
 import 'package:flutter_uandi/view/record_list.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,6 +21,19 @@ class HomeScreen extends StatelessWidget {
                     builder: (context) => RecordList()));
                 },
                 child: Container(child: Text('탭하여 시작하기',
+                style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 63, 63, 63)
+                ),)),
+              )),
+
+               Positioned(bottom: 80, left: (MediaQuery.of(context).size.width - 100) / 2.1,
+              child: GestureDetector(
+                onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecordDetailPage()));
+                },
+                child: Container(child: Text('상세페이지 들어가기',
                 style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 63, 63, 63)
                 ),)),
               )),
