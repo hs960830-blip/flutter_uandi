@@ -5,12 +5,6 @@ import 'package:flutter/material.dart';
 
 
 class RecordList extends StatefulWidget {
-  const RecordList({super.key});
-
-  RecordList(this.path, this.title);
-
-  String path;
-  String title;
 
   @override
   State<RecordList> createState() => _RecordListState();
@@ -34,19 +28,20 @@ class _RecordListState extends State<RecordList> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 10),
           Row(
             children: [
             Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20)) ,
+            padding: EdgeInsets.all(10)) ,
             Container(
-              width: 100,
-              height: 100,
+              width: 120,
+              height: 120,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assete/norahjoneslp.jpg'),
+                  image: AssetImage('assets/norahjoneslp.jpg'),
                   fit: BoxFit.contain),
               ),
-            )
+            ),
            // Image.asset('assets/norahjoneslp.jpg')
             ],
           ),
