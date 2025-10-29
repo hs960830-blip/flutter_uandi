@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_uandi/home/home_view_model.dart';
-import 'package:flutter_uandi/record_detail_page.dart';
 import 'package:flutter_uandi/view/record_create.dart';
 
 class HomeFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (Context, ref, child) {
+      builder: (context, ref, child) {
         final currentIndex = ref.watch(homeviewModel);
         if (currentIndex != 0) {
           return SizedBox();
@@ -34,7 +33,7 @@ class HomeFloatingActionButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
-          backgroundColor: Colors.brown,
+          backgroundColor: Theme.of(context).highlightColor,
           foregroundColor: Colors.white,
         );
       },
