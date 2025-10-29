@@ -11,7 +11,7 @@ class HomeFloatingActionButton extends StatelessWidget{
     builder: (Context, ref, child) {
 
       final currentIndex = ref.watch(homeviewModel);
-      if (cu)
+      if (currentIndex )
     })
   }
 }
