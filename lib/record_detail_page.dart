@@ -9,6 +9,9 @@ class RecordDetailPage extends StatefulWidget {
 
 class _RecordDetailPageState extends State<RecordDetailPage> {
   int _count = 1;
+  final int stock = 2; // 🔸테스트용 재고
+  final int unitPrice = 32000; // (선택) 가격 상수
+  int get maxBuy => stock < 10 ? stock : 10; // 🔸구매 가능 최대치 = min(재고, 10)
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +64,17 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
 
             const SizedBox(height: 16),
 
+            // 남은 수량
+            Text(
+              '남은 수량 : $stock개',
+              style: TextStyle(
+                fontSize: 12,
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 8),
+
             // 음반명
             const Text(
               '인어공주 OST',
@@ -73,9 +87,9 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
 
             // 가격
             const SizedBox(height: 8),
-            const Text(
-              '₩32,000',
-              style: TextStyle(fontSize: 18, color: Colors.indigo),
+            Text(
+              '₩$unitPrice',
+              style: const TextStyle(fontSize: 18, color: Colors.indigo),
             ),
 
             // 상세 설명
