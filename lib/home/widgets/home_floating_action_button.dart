@@ -21,7 +21,7 @@ class HomeFloatingActionButton extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return RecordCreate(); //상품등록페이지 연결
+                  return RecordCreate(); //상품등록페이지 연결..
                 },
               ),
             );
