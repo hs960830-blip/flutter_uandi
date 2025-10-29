@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_uandi/home/home_view_model.dart';
 import 'package:flutter_uandi/record_detail_page.dart';
+import 'package:flutter_uandi/view/record_create.dart';
 
 class HomeFloatingActionButton extends StatelessWidget {
   @override
@@ -20,7 +21,7 @@ class HomeFloatingActionButton extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return RecordDetailPage(); //상품등록페이지 연결
+                  return RecordCreate(); //상품등록페이지 연결
                 },
               ),
             );

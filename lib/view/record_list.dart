@@ -1,11 +1,7 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class RecordList extends StatefulWidget {
-
   @override
   State<RecordList> createState() => _RecordListState();
 }
@@ -14,7 +10,7 @@ class _RecordListState extends State<RecordList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* appBar: AppBar(
+      /* appBar: AppBar(
         title: Text('wasabi gimbab records',
         style: TextStyle(
           fontSize: 15,
@@ -31,18 +27,18 @@ class _RecordListState extends State<RecordList> {
           SizedBox(height: 10),
           Row(
             children: [
-            Padding(
-            padding: EdgeInsets.all(10)) ,
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/norahjoneslp.jpg'),
-                  fit: BoxFit.contain),
+              Padding(padding: EdgeInsets.all(10)),
+              Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/norahjoneslp.jpg'),
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
-            ),
-           // Image.asset('assets/norahjoneslp.jpg')
+              // Image.asset('assets/norahjoneslp.jpg')
             ],
           ),
         ],
@@ -50,12 +46,3 @@ class _RecordListState extends State<RecordList> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
