@@ -13,15 +13,33 @@ class HomeBottomNavigationBar extends StatelessWidget{
       builder: (context, ref, child) {
       final currentIndex = ref.watch(homeviewModel);
       final viewModel = ref.read(homeviewModel.notifier);
-      return BottomNavigationBar(items: [
+      return BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: viewModel.onIndexChanged,
+        iconSize: 28,
+        selectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+        ),
+        
+        items: [
         BottomNavigationBarItem(icon: Icon(Icons.house_outlined),
-        label: 'home',
+        activeIcon: Icon(Icons.home),
+        label: '홈',
+        tooltip: '홈',
         ),
-         BottomNavigationBarItem(icon: Icon(Icons.house_outlined),
-         label: 'cart',
+         BottomNavigationBarItem(icon: Icon(CupertinoIcons.chat_bubble_2),
+         activeIcon: Icon(CupertinoIcons.chat_bubble_2_fill),
+         label: '채팅',
+         tooltip: '채탕'
         ),
-         BottomNavigationBarItem(icon: Icon(Icons.house_outlined),
-         label: 'my page',
+         BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart),
+         activeIcon: Icon(CupertinoIcons.cart_fill) ,
+         label: '장바구니',
+         tooltip: '장바구니'
         ),
       ]);
     },);
