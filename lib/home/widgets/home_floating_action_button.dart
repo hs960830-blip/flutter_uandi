@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_uandi/home/home_view_model.dart';
+import 'package:flutter_uandi/record_detail_page.dart';
 
 class HomeFloatingActionButton extends StatelessWidget {
   @override
@@ -19,10 +20,10 @@ class HomeFloatingActionButton extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return ProductWritePage(); //상품등록페이지 연결
+                  return RecordDetailPage(); //상품등록페이지 연결
                 },
               ),
-             );
+            );
           },
           label: Text(
             '상품등록',
