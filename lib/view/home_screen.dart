@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_uandi/record_list.dart';
+import 'package:flutter_uandi/view/record_list.dart';
 
-class HomeScreen extends StatelessWidget {
+class Home_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
