@@ -69,7 +69,9 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
               '남은 수량 : $stock개',
               style: TextStyle(
                 fontSize: 12,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withValues(alpha: 0.8),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -124,11 +126,22 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
               // 1) 수량 (- 1 +)  +  우측 가격
               Row(
                 children: [
+                  // - 버튼
                   IconButton(
                     icon: const Icon(Icons.remove_circle_outline),
-                    onPressed: () => setState(() {
-                      if (_count > 1) _count--;
-                    }),
+                    onPressed: () {
+                      setState(() {
+                        if (_count > 1) {
+                          _count--;
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('구매 가능한 최소 수량은 1개입니다.'),
+                            ),
+                          );
+                        }
+                      });
+                    },
                   ),
                   Text(
                     '$_count',
@@ -137,14 +150,32 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  // + 버튼
                   IconButton(
                     icon: const Icon(Icons.add_circle_outline),
-                    onPressed: () => setState(() => _count++),
+                    onPressed: () {
+                      setState(() {
+                        if (_count < maxBuy) {
+                          _count++;
+                        } else {
+                          // 최대치는 min(재고, 10)
+                          final limitMsg = stock < 10
+                              ? '남은 수량은 $stock개입니다.'
+                              : '최대 구매 수량은 10개입니다.';
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(SnackBar(content: Text(limitMsg)));
+                        }
+                      });
+                    },
                   ),
                   const Spacer(),
-                  const Text(
-                    '₩32,000',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  Text(
+                    '₩${unitPrice * _count}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
