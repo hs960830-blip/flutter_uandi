@@ -3,16 +3,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_uandi/home/widgets/home_bottom_navigation_bar.dart';
+import 'package:flutter_uandi/home/widgets/home_floating_action_button.dart';
+import 'package:flutter_uandi/home/widgets/home_indexed_stack.dart';
 
 class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
    return Scaffold(
     appBar: AppBar(),
-    body: Text('HomePage'),
+    body: HomeIndexedStack(),
     bottomNavigationBar: HomeBottomNavigationBar(),
-    floatingActionButton: 
+    floatingActionButton: HomeFloatingActionButton()
    );
   }
-
 }
