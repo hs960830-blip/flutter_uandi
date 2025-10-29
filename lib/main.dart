@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //상단 디버그 글씨 지우기
-      home: RecordDetailPage(),
+      home: HomeScreen(),
     );
   }
 }
