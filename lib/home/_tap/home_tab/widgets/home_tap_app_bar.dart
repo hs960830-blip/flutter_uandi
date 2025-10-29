@@ -8,13 +8,23 @@ class HomeTapAppBar extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('wasabi gimbab records'),
+      title: Text('와사비 김밥 레코즈',
+      style: TextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
+        color: const Color.fromARGB(255, 55, 55, 55)
+      ),),
       actions: [
         GestureDetector(
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('data'))
+            );
+          },
           child: Container(
             width: 50,
             height: 50,
-            color: const Color.fromARGB(0, 255, 0, 0),
+            color:  Color.fromARGB(0, 223, 4, 4),
             child: Icon(CupertinoIcons.heart),
           ),
         )
