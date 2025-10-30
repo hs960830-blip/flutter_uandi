@@ -14,7 +14,7 @@ class HomeFloatingActionButton extends StatelessWidget {
           return SizedBox();
         }
 
-        return FloatingActionButton.extended(
+        return FloatingActionButton(
           onPressed: () {
             Navigator.push(
               context,
@@ -25,16 +25,15 @@ class HomeFloatingActionButton extends StatelessWidget {
               ),
             );
           },
-          label: Text(
+          
+          /*Text(
             '상품등록',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          icon: Icon(Icons.add),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
+          ),*/
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add, size: 28),
           backgroundColor: Theme.of(context).highlightColor,
-          foregroundColor: Colors.white,
+          foregroundColor: const Color.fromARGB(255, 252, 255, 222),
         );
       },
     );

@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               },
               child: Container(
                 child: Text(
-                  '탭하여 시작하기',
+                  '탭하여 들어가기',
                   style: TextStyle(
                     fontSize: 18,
                     color: const Color.fromARGB(255, 63, 63, 63),

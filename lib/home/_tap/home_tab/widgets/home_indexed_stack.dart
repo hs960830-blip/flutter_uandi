@@ -14,6 +14,7 @@ class HomeIndexedStack extends StatelessWidget{
     return Consumer(builder: (context, ref, child) {
       final currentIndex = ref.watch(homeviewModel);
       return IndexedStack(
+        index: currentIndex,
         children: [
           HomeTab(),
           ChatTab(),
