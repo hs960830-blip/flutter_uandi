@@ -61,7 +61,7 @@ class HomeTapListView extends StatelessWidget {
         'title': '[DISNEY] The Little Mermaid LP',
         'image': 'assets/thelittlemermaid.jpeg',
         'price': 32000,
-        'stock': 3,
+        'stock': 2,
       },
     ];
 
